@@ -2,7 +2,7 @@
 
 **Date:** 2026-03-12
 **Status:** Accepted
-**Deciders:** Abdulrahim Ham
+**Deciders:** abdulrahimham
 
 ---
 
@@ -35,7 +35,7 @@ with **DuckDB** as the query engine during MVP development.
 - Zero-infrastructure SQL analytics over Parquet files
 - Native integration with dbt-duckdb
 - Performance comparable to a small Spark cluster for this data volume
-- A clear upgrade path: swap the DuckDB engine for Trino or Spark without changing the Parquet files
+- A clear upgrade path: swap the DuckDB engine for Trino or Spark without changing Parquet files
 
 ---
 

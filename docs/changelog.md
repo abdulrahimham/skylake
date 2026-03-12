@@ -10,4 +10,4 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Core documentation files
 - pyproject.toml with full dependency list
 - Makefile with developer workflow commands
-- Architecture Decision Records (ADR-001 through ADR-005)
+- Architecture Decision Records (ADR-001)
