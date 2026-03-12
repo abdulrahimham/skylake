@@ -11,8 +11,8 @@
 
 | Phase | Status |
 |---|---|
-| Phase 0 — Foundation | 🟡 In Progress |
-| Phase 1 — Raw Ingestion | ⬜ Not Started |
+| Phase 0 — Foundation | ✅ Complete |
+| Phase 1 — Raw Ingestion | 🟡 In Progress |
 | Phase 2 — Bronze Layer | ⬜ Not Started |
 | Phase 3 — Silver Layer | ⬜ Not Started |
 | Phase 4 — Gold Layer | ⬜ Not Started |
@@ -100,6 +100,7 @@ make up
 | [docs/ingestion_runbook.md](docs/ingestion_runbook.md) | How to run ingestion |
 | [docs/decisions/](docs/decisions/) | Architecture Decision Records |
 | [docs/roadmap.md](docs/roadmap.md) | Future development plan |
+| [docs/changelog.md](docs/changelog.md) | Version history |
 
 ---
 

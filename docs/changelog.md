@@ -24,32 +24,32 @@ Phase 0 — Foundation complete.
 - Full project folder structure for all pipeline layers
 - pyproject.toml with complete dependency list managed by uv
 - Makefile with developer workflow commands
-  (setup, lint, test, dbt-compile, dbt-test, ingest, soda, ci)
 - Root README with architecture overview and quickstart
-- GitHub Actions CI pipeline running lint and unit tests on push
+- GitHub Actions CI pipeline — lint and unit tests on every push
 - Docker Compose with Dagster and Streamlit services
 - Dagster Dockerfile
 - Streamlit Dockerfile and app placeholder
-- docs/architecture.md — full system architecture overview
-- docs/roadmap.md — MVP scope and production upgrade path
-- docs/data_model.md — layer-by-layer data model documentation
-- docs/data_dictionary.md — field-level definitions (in progress)
+- docs/architecture.md — full system architecture with data flow diagram
+- docs/data_model.md — column definitions for all 12 pipeline tables
+- docs/roadmap.md — MVP scope and three-phase upgrade path
+- docs/changelog.md — version history following Keep a Changelog format
+- docs/data_dictionary.md — field definitions (in progress)
 - docs/ingestion_runbook.md — operational runbook (in progress)
 - docs/demo_notes.md — presentation notes (in progress)
-- ADR-001: Storage format — DuckDB + Parquet
-- ADR-002: Orchestration — Dagster over Airflow
-- ADR-003: Transformation — dbt-core
-- ADR-004: Data quality — Soda Core + dbt tests
+- ADR-001: Storage format — DuckDB + Parquet over PostgreSQL/CSV
+- ADR-002: Orchestration — Dagster over Apache Airflow
+- ADR-003: Transformation — dbt-core over raw Python/Spark
+- ADR-004: Data quality — Soda Core + dbt tests (defense in depth)
 - ADR-005: API source — NOAA Aviation Weather Center
 
 ### Technical Decisions
-- Python 3.11 as minimum runtime version
-- uv for dependency management over pip or Poetry
-- Dagster over Apache Airflow for orchestration
+- Python 3.11 minimum runtime
+- uv for dependency management
+- Dagster over Apache Airflow
 - dbt-core + dbt-duckdb for transformation
-- DuckDB + Parquet for MVP storage layer
-- Soda Core for bronze layer data quality
-- Docker + Compose for full reproducibility
+- DuckDB + Parquet for MVP storage
+- Soda Core for bronze layer quality checks
+- Docker Compose for full reproducibility
 - GitHub Actions for CI on every push
 
 ---
@@ -58,7 +58,7 @@ Phase 0 — Foundation complete.
 
 | Version | Milestone |
 |---|---|
-| 0.1.0 | Phase 0 complete — foundation and documentation |
+| 0.1.0 | Phase 0 complete — foundation and documentation ✅ |
 | 0.2.0 | Phase 1 complete — raw ingestion working |
 | 0.3.0 | Phase 2 complete — bronze layer and Soda checks |
 | 0.4.0 | Phase 3 complete — silver layer dbt models |
