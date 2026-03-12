@@ -1,0 +1,51 @@
+[project]
+name = "skylake"
+version = "0.1.0"
+description = "Airport Weather Operations Lakehouse — end-to-end data engineering project ingesting NOAA aviation weather data through bronze/silver/gold layers"
+readme = "README.md"
+requires-python = ">=3.11"
+
+dependencies = [
+    "dagster>=1.7.0",
+    "dagster-webserver>=1.7.0",
+    "dagster-dbt>=0.23.0",
+    "dbt-core>=1.8.0",
+    "dbt-duckdb>=1.8.0",
+    "duckdb>=1.0.0",
+    "httpx>=0.27.0",
+    "soda-core>=3.3.0",
+    "soda-core-duckdb>=3.3.0",
+    "pandas>=2.2.0",
+    "pyarrow>=16.0.0",
+    "streamlit>=1.35.0",
+    "python-dotenv>=1.0.0",
+    "pydantic>=2.7.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-asyncio>=0.23.0",
+    "ruff>=0.4.0",
+    "mypy>=1.10.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.ruff]
+line-length = 88
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP"]
+
+[tool.mypy]
+python_version = "3.11"
+ignore_missing_imports = true
+strict = false
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"

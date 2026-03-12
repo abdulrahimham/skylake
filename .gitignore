@@ -1,0 +1,51 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+.uv/
+dist/
+*.egg-info/
+.eggs/
+
+# Environment
+.env
+!.env.example
+
+# Data — never commit raw or processed data
+data/raw/
+data/bronze/
+data/silver/
+data/gold/
+!data/raw/metar/.gitkeep
+!data/raw/taf/.gitkeep
+!data/bronze/.gitkeep
+!data/silver/.gitkeep
+!data/gold/.gitkeep
+*.parquet
+*.duckdb
+*.db
+
+# Dagster
+dagster/dagster_home/*
+!dagster/dagster_home/.gitkeep
+
+# dbt
+dbt/skylake_dbt/target/
+dbt/skylake_dbt/logs/
+dbt/skylake_dbt/.user.yml
+profiles.yml
+!profiles.yml.example
+
+# Soda
+.soda/
+
+# Docker
+docker-compose.override.yml
+
+# OS
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
