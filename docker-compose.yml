@@ -1,0 +1,39 @@
+name: skylake
+
+services:
+
+  # ── Dagster ──────────────────────────────────────────────────
+  # Dagster is the orchestrator — it runs and monitors the pipeline
+  dagster:
+    build:
+      context: .
+      dockerfile: docker/dagster.Dockerfile
+    image: skylake-dagster
+    container_name: skylake-dagster
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./data:/app/data
+      - ./dagster:/app/dagster
+    env_file:
+      - .env
+    restart: unless-stopped
+
+  # ── Streamlit ─────────────────────────────────────────────────
+  # Streamlit is the dashboard — reads from the gold layer
+  streamlit:
+    build:
+      context: .
+      dockerfile: docker/streamlit.Dockerfile
+    image: skylake-streamlit
+    container_name: skylake-streamlit
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./data:/app/data
+      - ./streamlit:/app/streamlit
+    env_file:
+      - .env
+    depends_on:
+      - dagster
+    restart: unless-stopped
