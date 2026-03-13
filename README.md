@@ -12,8 +12,8 @@
 | Phase | Status |
 |---|---|
 | Phase 0 — Foundation | ✅ Complete |
-| Phase 1 — Raw Ingestion | 🟡 In Progress |
-| Phase 2 — Bronze Layer | ⬜ Not Started |
+| Phase 1 — Raw Ingestion | ✅ Complete |
+| Phase 2 — Bronze Layer | 🟡 In Progress |
 | Phase 3 — Silver Layer | ⬜ Not Started |
 | Phase 4 — Gold Layer | ⬜ Not Started |
 | Phase 5 — Orchestration | ⬜ Not Started |
