@@ -1,0 +1,9 @@
+icao_id,iata_id,airport_name,city,state,country,latitude,longitude,elevation_ft,timezone,climate_notes
+KJFK,JFK,John F Kennedy International,New York,NY,US,40.6392,-73.7639,13,America/New_York,Fog and snow common in winter
+KLAX,LAX,Los Angeles International,Los Angeles,CA,US,33.9425,-118.4081,125,America/Los_Angeles,Marine layer causes low ceilings in summer mornings
+KORD,ORD,Chicago O'Hare International,Chicago,IL,US,41.9742,-87.9073,672,America/Chicago,Severe thunderstorms and winter crosswinds
+KATL,ATL,Hartsfield-Jackson Atlanta International,Atlanta,GA,US,33.6367,-84.4281,1026,America/New_York,High humidity and afternoon thunderstorms in summer
+KDFW,DFW,Dallas Fort Worth International,Dallas,TX,US,32.8998,-97.0403,607,America/Chicago,Severe storms and high winds common in spring
+KSEA,SEA,Seattle-Tacoma International,Seattle,WA,US,47.4502,-122.3088,433,America/Los_Angeles,Persistent low ceilings and drizzle in autumn and winter
+KDEN,DEN,Denver International,Denver,CO,US,39.8561,-104.6737,5431,America/Denver,High altitude wind and rapid weather changes
+KMIA,MIA,Miami International,Miami,FL,US,25.7959,-80.2870,8,America/New_York,Subtropical humidity and afternoon convective storms
