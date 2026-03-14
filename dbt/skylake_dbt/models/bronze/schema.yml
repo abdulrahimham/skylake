@@ -1,0 +1,102 @@
+version: 2
+
+models:
+  - name: bronze_metar
+    description: >
+      Raw METAR observations from NOAA AWC API, cleaned and typed.
+      One row per observation per airport. Source of truth for all
+      silver and gold weather condition models.
+    columns:
+      - name: station_id
+        description: ICAO airport code (e.g. KJFK)
+        tests:
+          - not_null
+      - name: obs_time
+        description: Observation timestamp (UTC)
+        tests:
+          - not_null
+      - name: temp_c
+        description: Temperature in Celsius
+      - name: dewpoint_c
+        description: Dewpoint temperature in Celsius
+      - name: wind_dir_deg
+        description: Wind direction in degrees (0-360)
+      - name: wind_speed_kt
+        description: Wind speed in knots
+      - name: wind_gust_kt
+        description: Wind gust speed in knots (null if no gusts)
+      - name: visibility_miles
+        description: Visibility in statute miles. 10.0 means 10+ miles.
+      - name: altimeter_hpa
+        description: Altimeter setting in hectopascals
+      - name: sea_level_pressure_hpa
+        description: Sea level pressure in hectopascals
+      - name: precip_in
+        description: Precipitation in inches
+      - name: sky_cover
+        description: Overall sky cover (CLR, FEW, SCT, BKN, OVC)
+      - name: ceiling_ft
+        description: Lowest broken or overcast cloud base in feet AGL
+      - name: flt_cat
+        description: FAA flight category based on ceiling and visibility
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['VFR', 'MVFR', 'IFR', 'LIFR']
+      - name: wx_string
+        description: Present weather string (e.g. -SN BR, TS, FG)
+      - name: raw_ob
+        description: Full raw METAR observation string
+        tests:
+          - not_null
+      - name: latitude
+        description: Airport latitude in decimal degrees
+      - name: longitude
+        description: Airport longitude in decimal degrees
+      - name: elevation_ft
+        description: Airport elevation in feet MSL
+
+  - name: bronze_taf
+    description: >
+      Raw TAF forecasts from NOAA AWC API, cleaned and typed.
+      One row per TAF bulletin per airport. Forecast periods are
+      preserved as JSON for expansion in the silver layer.
+    columns:
+      - name: station_id
+        description: ICAO airport code (e.g. KJFK)
+        tests:
+          - not_null
+      - name: issue_time
+        description: Time the TAF was issued (UTC)
+        tests:
+          - not_null
+      - name: bulletin_time
+        description: Time the bulletin was released (UTC)
+      - name: valid_from_epoch
+        description: Start of TAF validity window as Unix timestamp
+      - name: valid_to_epoch
+        description: End of TAF validity window as Unix timestamp
+      - name: init_wind_dir_deg
+        description: Wind direction in first forecast period (degrees)
+      - name: init_wind_speed_kt
+        description: Wind speed in first forecast period (knots)
+      - name: init_wind_gust_kt
+        description: Wind gust in first forecast period (knots, null if none)
+      - name: init_visibility
+        description: Visibility in first forecast period
+      - name: forecast_periods_json
+        description: Full forecast periods array preserved as JSON for silver expansion
+        tests:
+          - not_null
+      - name: raw_taf
+        description: Full raw TAF bulletin string
+        tests:
+          - not_null
+      - name: latitude
+        description: Airport latitude in decimal degrees
+      - name: longitude
+        description: Airport longitude in decimal degrees
+      - name: elevation_ft
+        description: Airport elevation in feet MSL
+      - name: is_most_recent
+        description: 1 if this is the most recent TAF for the airport, 0 otherwise
