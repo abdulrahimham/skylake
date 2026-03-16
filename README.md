@@ -13,8 +13,8 @@
 |---|---|
 | Phase 0 — Foundation | ✅ Complete |
 | Phase 1 — Raw Ingestion | ✅ Complete |
-| Phase 2 — Bronze Layer | 🟡 In Progress |
-| Phase 3 — Silver Layer | ⬜ Not Started |
+| Phase 2 — Bronze Layer | ✅ Complete |
+| Phase 3 — Silver Layer | 🟡 In Progress |
 | Phase 4 — Gold Layer | ⬜ Not Started |
 | Phase 5 — Orchestration | ⬜ Not Started |
 | Phase 6 — Data Quality | ⬜ Not Started |
