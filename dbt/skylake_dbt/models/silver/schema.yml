@@ -50,3 +50,40 @@ models:
         description: State from airport_metadata seed
       - name: timezone
         description: IANA timezone from airport_metadata seed
+
+  - name: silver_taf_parsed
+    description: >
+      TAF forecast periods unnested into individual rows.
+      One row per forecast period per TAF bulletin.
+      Enables joining forecast periods to actual METAR observations
+      for forecast accuracy scoring.
+    columns:
+      - name: taf_period_id
+        description: Surrogate key — station + issue_time + period sequence
+        tests:
+          - not_null
+          - unique
+      - name: station_id
+        description: ICAO airport code
+        tests:
+          - not_null
+      - name: issue_time
+        description: Time the TAF was issued (UTC)
+        tests:
+          - not_null
+      - name: period_sequence
+        description: Period number within this TAF (1 = first/initial period)
+        tests:
+          - not_null
+      - name: period_valid_from
+        description: Start of this forecast period (UTC timestamp)
+        tests:
+          - not_null
+      - name: period_valid_to
+        description: End of this forecast period (UTC timestamp)
+        tests:
+          - not_null
+      - name: forecast_wind_speed_kt
+        description: Forecast wind speed in knots for this period
+      - name: forecast_visibility_miles
+        description: Forecast visibility in statute miles (10.0 = 10+)
