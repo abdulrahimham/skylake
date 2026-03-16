@@ -1,0 +1,52 @@
+version: 2
+
+models:
+  - name: silver_metar_parsed
+    description: >
+      Enriched METAR observations with derived categories, flight category
+      rankings, surrogate key, and airport metadata join. One row per
+      observation per airport. Primary analytical table for weather conditions.
+    columns:
+      - name: metar_id
+        description: Surrogate key — station_id + obs_time (e.g. KJFK_20260313T230000)
+        tests:
+          - not_null
+          - unique
+      - name: station_id
+        description: ICAO airport code
+        tests:
+          - not_null
+      - name: obs_time
+        description: Observation timestamp (UTC)
+        tests:
+          - not_null
+      - name: flt_cat
+        description: FAA flight category (VFR, MVFR, IFR, LIFR)
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['VFR', 'MVFR', 'IFR', 'LIFR']
+      - name: flt_cat_rank
+        description: Numeric severity rank (1=VFR, 2=MVFR, 3=IFR, 4=LIFR)
+        tests:
+          - not_null
+      - name: wind_category
+        description: Human-readable wind category (CALM, LIGHT, MODERATE, STRONG, GALE)
+        tests:
+          - not_null
+      - name: visibility_category
+        description: Human-readable visibility category (CLEAR, GOOD, MODERATE, POOR, VERY_POOR)
+        tests:
+          - not_null
+      - name: ceiling_category
+        description: Human-readable ceiling category (HIGH, SCATTERED, BROKEN, LOW, VERY_LOW)
+        tests:
+          - not_null
+      - name: airport_name
+        description: Full airport name from airport_metadata seed
+      - name: city
+        description: City from airport_metadata seed
+      - name: state
+        description: State from airport_metadata seed
+      - name: timezone
+        description: IANA timezone from airport_metadata seed
