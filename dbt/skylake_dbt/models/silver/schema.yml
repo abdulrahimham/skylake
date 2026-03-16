@@ -87,3 +87,37 @@ models:
         description: Forecast wind speed in knots for this period
       - name: forecast_visibility_miles
         description: Forecast visibility in statute miles (10.0 = 10+)
+
+  - name: silver_forecast_actuals
+    description: >
+      Joins TAF forecast periods to actual METAR observations that occurred
+      during each period's validity window. Each row pairs one forecast period
+      with one matching METAR. Foundation for gold layer accuracy scoring.
+    columns:
+      - name: forecast_actual_id
+        description: Surrogate key — taf_period_id + metar_id
+        tests:
+          - not_null
+          - unique
+      - name: station_id
+        description: ICAO airport code
+        tests:
+          - not_null
+      - name: taf_issue_time
+        description: Time the TAF was issued (UTC)
+        tests:
+          - not_null
+      - name: actual_obs_time
+        description: Time of the actual METAR observation (UTC)
+        tests:
+          - not_null
+      - name: wind_speed_error_kt
+        description: Absolute difference between forecast and actual wind speed in knots
+      - name: wind_speed_accurate
+        description: 1 if wind speed forecast was within 5kt of actual, 0 otherwise
+      - name: visibility_error_miles
+        description: Absolute difference between forecast and actual visibility in miles
+      - name: visibility_accurate
+        description: 1 if visibility forecast was within 1 mile of actual, 0 otherwise
+      - name: forecast_lead_hours
+        description: How many hours ahead this period was forecast when TAF was issued
