@@ -15,8 +15,8 @@
 | Phase 1 — Raw Ingestion | ✅ Complete |
 | Phase 2 — Bronze Layer | ✅ Complete |
 | Phase 3 — Silver Layer | ✅ Complete |
-| Phase 4 — Gold Layer | 🟡 In Progress |
-| Phase 5 — Orchestration | ⬜ Not Started |
+| Phase 4 — Gold Layer | ✅ Complete |
+| Phase 5 — Orchestration | 🟡 In Progress |
 | Phase 6 — Data Quality | ⬜ Not Started |
 | Phase 7 — Serving Layer | ⬜ Not Started |
 | Phase 8 — CI + Docker | ⬜ Not Started |
